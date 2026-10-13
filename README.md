@@ -3,9 +3,11 @@
 > [!NOTE]
 > 🤖 This is a vibecoded project.
 
-Jump straight to any visible pane in the active [Herdr](https://github.com/ogulcancelik/herdr) tab using large hint labels.
+Jump straight to any visible pane in the active [Herdr](https://github.com/ogulcancelik/herdr) tab using large hint labels, or insert a pane's id at your cursor.
 
 https://github.com/user-attachments/assets/f58af88e-a0e8-4cee-82aa-7e6984ed400e
+
+The demo shows pane ids being inserted at the cursor with `Shift` + number.
 
 ## 📦 Installation
 
@@ -31,7 +33,7 @@ https://github.com/user-attachments/assets/f58af88e-a0e8-4cee-82aa-7e6984ed400e
 
   ```toml
   [[keys.command]]
-  key = "prefix+e"
+  key = "prefix+q"
   type = "plugin_action"
   command = "com.fulopkovacs.herdr-easier-motion.pane"
   description = "select pane"
@@ -56,3 +58,6 @@ https://github.com/user-attachments/assets/f58af88e-a0e8-4cee-82aa-7e6984ed400e
 ## 🍴 About this fork
 
 - Fork of [elliotekj/herdr-easymotion](https://github.com/elliotekj/herdr-easymotion). Many thanks to [Elliot Jackson](https://elliotekj.com) for his work on the original plugin!
+- What's changed:
+  - Speed improvements: the hints show up faster.
+  - Inserting pane ids: `Shift` + number types a pane's id at your cursor.
