@@ -1,12 +1,18 @@
 # Herdr EasyMotion
 
+
+
 Jump directly between visible panes in the active [Herdr](https://github.com/ogulcancelik/herdr) tab with large numbered pane hints.
 
 Herdr EasyMotion captures the visible panes and reconstructs the tab in a full-size terminal popup, with a large keyboard shortcut and pane ID centered over each pane. Press the matching key to focus that real pane. It is intended for layouts where directional pane movement is slower than selecting the destination directly.
 
 Hold Shift while pressing a numbered pane shortcut to type that pane's ID at the cursor in the current pane without switching panes.
 
-![Herdr EasyMotion pane hints demo](assets/herdr-easymotion-pane-hints.png)
+
+
+https://github.com/user-attachments/assets/f58af88e-a0e8-4cee-82aa-7e6984ed400e
+
+
 
 ## Installation
 
