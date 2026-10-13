@@ -7,12 +7,6 @@ Jump straight to any visible pane in the active [Herdr](https://github.com/ogulc
 
 https://github.com/user-attachments/assets/f58af88e-a0e8-4cee-82aa-7e6984ed400e
 
-## 🍴 About this fork
-
-- Fork of [elliotekj/herdr-easymotion](https://github.com/elliotekj/herdr-easymotion) by Elliot Jackson.
-- Renamed to **Herdr Easier Motion** (plugin ID: `com.fulopkovacs.herdr-easier-motion`).
-- I use it a lot, every day, to move around my Herdr panes.
-
 ## 📦 Installation
 
 - You need Herdr 0.7.4 or newer and Node.js 18 or newer on your `PATH`.
@@ -58,3 +52,7 @@ https://github.com/user-attachments/assets/f58af88e-a0e8-4cee-82aa-7e6984ed400e
 ## 📄 License
 
 - [Apache License 2.0](LICENSE). Original work by [Elliot Jackson](https://elliotekj.com).
+
+## 🍴 About this fork
+
+- Fork of [elliotekj/herdr-easymotion](https://github.com/elliotekj/herdr-easymotion). Many thanks to [Elliot Jackson](https://elliotekj.com) for his work on the original plugin!
