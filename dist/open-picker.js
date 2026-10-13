@@ -24,7 +24,7 @@ function writeRenderResult(filePath, result) {
 }
 async function main() {
     const env = process.env;
-    const pluginId = env.HERDR_PLUGIN_ID || "com.elliotekj.herdr-easymotion";
+    const pluginId = env.HERDR_PLUGIN_ID || "com.fulopkovacs.herdr-easier-motion";
     const context = (0, core_1.parsePluginContext)(env.HERDR_PLUGIN_CONTEXT_JSON);
     const sourcePaneId = (0, core_1.resolvePaneIdFromContext)(context, env);
     const statusPath = renderStatusPath(env);

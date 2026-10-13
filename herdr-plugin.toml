@@ -1,5 +1,5 @@
-id = "com.elliotekj.herdr-easymotion"
-name = "Herdr EasyMotion"
+id = "com.fulopkovacs.herdr-easier-motion"
+name = "Herdr Easier Motion"
 version = "0.1.0"
 min_herdr_version = "0.7.4"
 description = "Jump directly between visible panes in the active Herdr tab."
