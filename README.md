@@ -15,6 +15,7 @@ https://github.com/user-attachments/assets/f58af88e-a0e8-4cee-82aa-7e6984ed400e
 
 ## 📦 Installation
 
+- You need Herdr 0.7.4 or newer and Node.js 18 or newer on your `PATH`.
 - Install the plugin:
 
   ```bash
@@ -28,8 +29,7 @@ https://github.com/user-attachments/assets/f58af88e-a0e8-4cee-82aa-7e6984ed400e
   kitty_graphics = true
   ```
 
-- Install [FIGlet](http://www.figlet.org/) and make sure `figlet` is on your `PATH`. It renders the hints.
-- The hint background matches the macOS light or dark appearance. To override it, or on other platforms, set `HERDR_EASYMOTION_APPEARANCE` to `light` or `dark`.
+- On macOS, the hint background follows the system's light or dark appearance. Elsewhere it defaults to dark. To override it, set `HERDR_EASYMOTION_APPEARANCE` to `light` or `dark`.
 
 ## ⌨️ Keybindings
 
@@ -46,11 +46,13 @@ https://github.com/user-attachments/assets/f58af88e-a0e8-4cee-82aa-7e6984ed400e
 - Or run it directly: `herdr plugin action invoke com.fulopkovacs.herdr-easier-motion.pane`
 - While the hints are on screen:
   - `1`–`9`, then `a`–`z` (except `q`): jump to that pane
+  - `Shift` + `1`–`9`: type that pane's id (followed by a space) at the cursor in the pane you started from, instead of jumping
   - `q`, `Esc` or `Ctrl-C`: cancel
 
 ## 💡 Notes
 
-- Only panes in the active tab get hints.
+- Only panes in the active tab get hints. Each hint shows the pane's id under its shortcut.
+- `Shift` + number expects a US keyboard layout (`!` for `1`, `@` for `2`, and so on).
 - In a zoomed tab, Herdr only exposes the zoomed pane, so there's nothing else to jump to.
 
 ## 📄 License
