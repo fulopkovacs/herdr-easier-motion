@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.graphicsDisabledStatus = graphicsDisabledStatus;
 exports.readKey = readKey;
 exports.keyToSelection = keyToSelection;
-exports.copyPaneId = copyPaneId;
 exports.renderHints = renderHints;
 exports.clearHints = clearHints;
 exports.isGraphicsDisabled = isGraphicsDisabled;
@@ -76,11 +75,8 @@ function keyToSelection(key) {
     const shiftedNumberIndex = SHIFTED_NUMBER_KEYS.indexOf(key);
     return {
         shortcut: shiftedNumberIndex === -1 ? key.toLowerCase() : String(shiftedNumberIndex + 1),
-        copyPaneId: shiftedNumberIndex !== -1,
+        insertPaneId: shiftedNumberIndex !== -1,
     };
-}
-function copyPaneId(paneId, output = process.stdout) {
-    output.write(`\x1b]52;c;${Buffer.from(paneId).toString("base64")}\x07`);
 }
 async function renderHints(targets, options = {}) {
     const env = options.env || process.env;
@@ -241,8 +237,10 @@ async function main() {
         const selected = selection ? shortcutMap.get(selection.shortcut) : undefined;
         const [selectionResult] = await Promise.allSettled([
             selected
-                ? selection?.copyPaneId
-                    ? Promise.resolve(copyPaneId(selected.paneId))
+                ? selection?.insertPaneId
+                    ? sourcePaneId
+                        ? (0, herdr_1.insertText)(sourcePaneId, selected.paneId, process.env)
+                        : Promise.resolve()
                     : (0, herdr_1.focusPane)(selected.paneId, process.env)
                 : Promise.resolve(),
             clearHints(renderedPaneIds, process.env),

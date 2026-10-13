@@ -14,6 +14,7 @@ exports.paneLayout = paneLayout;
 exports.paneLayoutAsync = paneLayoutAsync;
 exports.paneList = paneList;
 exports.focusPane = focusPane;
+exports.insertText = insertText;
 exports.openPluginPane = openPluginPane;
 exports.paneGraphicsInfo = paneGraphicsInfo;
 exports.paneGraphicsSet = paneGraphicsSet;
@@ -228,6 +229,9 @@ function paneList(env = process.env) {
 }
 function focusPane(paneId, env = process.env) {
     return request("pane.focus", { pane_id: paneId }, { env });
+}
+function insertText(paneId, text, env = process.env) {
+    return request("pane.send_text", { pane_id: paneId, text }, { env });
 }
 function openPluginPane(params, env = process.env) {
     return request("plugin.pane.open", params, { env });
