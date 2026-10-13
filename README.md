@@ -1,62 +1,58 @@
-# Herdr EasyMotion
+# Herdr Easier Motion
 
+> [!NOTE]
+> 🤖 This is a vibecoded project.
 
-
-Jump directly between visible panes in the active [Herdr](https://github.com/ogulcancelik/herdr) tab with large numbered pane hints.
-
-Herdr EasyMotion captures the visible panes and reconstructs the tab in a full-size terminal popup, with a large keyboard shortcut and pane ID centered over each pane. Press the matching key to focus that real pane. It is intended for layouts where directional pane movement is slower than selecting the destination directly.
-
-Hold Shift while pressing a numbered pane shortcut to type that pane's ID at the cursor in the current pane without switching panes.
-
-
+Jump straight to any visible pane in the active [Herdr](https://github.com/ogulcancelik/herdr) tab using large hint labels.
 
 https://github.com/user-attachments/assets/f58af88e-a0e8-4cee-82aa-7e6984ed400e
 
+## 🍴 About this fork
 
+- Fork of [elliotekj/herdr-easymotion](https://github.com/elliotekj/herdr-easymotion) by Elliot Jackson.
+- Renamed to **Herdr Easier Motion** (plugin ID: `com.fulopkovacs.herdr-easier-motion`).
+- I use it a lot, every day, to move around my Herdr panes.
 
-## Installation
+## 📦 Installation
 
-Install the plugin:
+- Install the plugin:
 
-```bash
-herdr plugin install elliotekj/herdr-easymotion
-```
+  ```bash
+  herdr plugin install fulopkovacs/herdr-easier-motion
+  ```
 
-No Kitty graphics configuration or Herdr fork is required. The picker uses supported `pane.layout` and `pane.read` APIs, not the `pane.graphics.*` APIs removed in Herdr 0.9.2.
+- Turn on Herdr's experimental Kitty graphics support, then reload or restart Herdr:
 
-The background is a frozen text-and-color snapshot while you select; the underlying programs keep running and their terminals are not modified. Native images are not captured. Resizing refreshes the snapshots and layout while preserving the original shortcut-to-pane mapping. Small panes use compact hints.
+  ```toml
+  [experimental]
+  kitty_graphics = true
+  ```
 
-The hint background follows the macOS light or dark appearance. On other platforms, or to override detection, set `HERDR_EASYMOTION_APPEARANCE` to `light` or `dark`.
+- Install [FIGlet](http://www.figlet.org/) and make sure `figlet` is on your `PATH`. It renders the hints.
+- The hint background matches the macOS light or dark appearance. To override it, or on other platforms, set `HERDR_EASYMOTION_APPEARANCE` to `light` or `dark`.
 
-## Usage
+## ⌨️ Keybindings
 
-Invoke the plugin action directly:
+- Bind the action in your Herdr config:
 
-```bash
-herdr plugin action invoke com.elliotekj.herdr-easymotion.pane
-```
+  ```toml
+  [[keys.command]]
+  key = "prefix+e"
+  type = "plugin_action"
+  command = "com.fulopkovacs.herdr-easier-motion.pane"
+  description = "select pane"
+  ```
 
-Or add a keybinding to your Herdr config, for example:
+- Or run it directly: `herdr plugin action invoke com.fulopkovacs.herdr-easier-motion.pane`
+- While the hints are on screen:
+  - `1`–`9`, then `a`–`z` (except `q`): jump to that pane
+  - `q`, `Esc` or `Ctrl-C`: cancel
 
-```toml
-[[keys.command]]
-key = "prefix+e"
-type = "plugin_action"
-command = "com.elliotekj.herdr-easymotion.pane"
-description = "select pane"
-```
+## 💡 Notes
 
-Hints target panes in the active tab layout. If the tab is zoomed, Herdr only exposes the zoomed pane as visible, so there is no alternate pane to jump to.
+- Only panes in the active tab get hints.
+- In a zoomed tab, Herdr only exposes the zoomed pane, so there's nothing else to jump to.
 
-Press a pane's shortcut to jump, Shift+number to insert its ID, or Esc, q, or Ctrl+C to cancel.
+## 📄 License
 
-## License
-
-[`Herdr EasyMotion`](LICENSE) is released under the Apache License 2.0.
-
-## About
-
-This plugin was written by Elliot Jackson.
-
-- Blog: https://elliotekj.com
-- Email: elliot@elliotekj.com
+- [Apache License 2.0](LICENSE). Original work by [Elliot Jackson](https://elliotekj.com).
