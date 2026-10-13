@@ -318,6 +318,14 @@ export function focusPane(
   return request("pane.focus", { pane_id: paneId }, { env });
 }
 
+export function insertText(
+  paneId: string,
+  text: string,
+  env: NodeJS.ProcessEnv = process.env,
+): Promise<HerdrResponse> {
+  return request("pane.send_text", { pane_id: paneId, text }, { env });
+}
+
 export function openPluginPane(
   params: PluginPaneOpenParams,
   env: NodeJS.ProcessEnv = process.env,

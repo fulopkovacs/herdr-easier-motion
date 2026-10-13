@@ -9,6 +9,7 @@ import type { CellSize } from "./graphics";
 import {
   HerdrRequestError,
   focusPane,
+  insertText,
   paneGraphicsClearMany,
   paneGraphicsInfo,
   paneGraphicsSetMany,
@@ -40,7 +41,7 @@ interface TerminalSession {
 
 interface PaneSelection {
   shortcut: string;
-  copyPaneId: boolean;
+  insertPaneId: boolean;
 }
 
 const SHIFTED_NUMBER_KEYS = "!@#$%^&*(";
@@ -117,15 +118,8 @@ export function keyToSelection(key: string): PaneSelection | null {
   const shiftedNumberIndex = SHIFTED_NUMBER_KEYS.indexOf(key);
   return {
     shortcut: shiftedNumberIndex === -1 ? key.toLowerCase() : String(shiftedNumberIndex + 1),
-    copyPaneId: shiftedNumberIndex !== -1,
+    insertPaneId: shiftedNumberIndex !== -1,
   };
-}
-
-export function copyPaneId(
-  paneId: string,
-  output: Pick<NodeJS.WritableStream, "write"> = process.stdout,
-): void {
-  output.write(`\x1b]52;c;${Buffer.from(paneId).toString("base64")}\x07`);
 }
 
 export async function renderHints(
@@ -343,8 +337,10 @@ async function main(): Promise<void> {
 
     const [selectionResult] = await Promise.allSettled([
       selected
-        ? selection?.copyPaneId
-          ? Promise.resolve(copyPaneId(selected.paneId))
+        ? selection?.insertPaneId
+          ? sourcePaneId
+            ? insertText(sourcePaneId, selected.paneId, process.env)
+            : Promise.resolve()
           : focusPane(selected.paneId, process.env)
         : Promise.resolve(),
       clearHints(renderedPaneIds, process.env),
