@@ -339,7 +339,7 @@ async function main(): Promise<void> {
       selected
         ? selection?.insertPaneId
           ? sourcePaneId
-            ? insertText(sourcePaneId, selected.paneId, process.env)
+            ? insertText(sourcePaneId, `${selected.paneId} `, process.env)
             : Promise.resolve()
           : focusPane(selected.paneId, process.env)
         : Promise.resolve(),

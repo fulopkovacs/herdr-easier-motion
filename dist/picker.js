@@ -239,7 +239,7 @@ async function main() {
             selected
                 ? selection?.insertPaneId
                     ? sourcePaneId
-                        ? (0, herdr_1.insertText)(sourcePaneId, selected.paneId, process.env)
+                        ? (0, herdr_1.insertText)(sourcePaneId, `${selected.paneId} `, process.env)
                         : Promise.resolve()
                     : (0, herdr_1.focusPane)(selected.paneId, process.env)
                 : Promise.resolve(),
